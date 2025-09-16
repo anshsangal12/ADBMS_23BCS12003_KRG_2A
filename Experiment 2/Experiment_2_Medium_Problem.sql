@@ -1,0 +1,26 @@
+CREATE TABLE Employee(
+EMP_ID INT PRIMARY KEY,
+EMP_NAME VARCHAR(25),
+DEPARTMENT VARCHAR(25),
+MANAGER_ID INT);
+
+INSERT INTO Employee
+(EMP_ID,EMP_NAME,DEPARTMENT,MANAGER_ID) VALUES
+(1, 'Akash', 'hr', NULL),
+(2, 'Lakshay', 'finance', 1),
+(3, 'Prakash', 'it', 1),
+(4, 'Abhinav', 'finance', 2),
+(5, 'Sameer', 'it', 3),
+(6, 'Aadarsh', 'hr', 1);
+
+SELECT * FROM Employee;
+
+SELECT E1.EMP_NAME AS [EMPLOYEE NAME], 
+E2.EMP_NAME AS [MANAGER NAME],
+E1.DEPARTMENT AS [EMPLOYEE_DEPT], 
+E2.DEPARTMENT AS [MANAGER_DEPT]
+FROM Employee AS E1
+LEFT OUTER JOIN
+Employee AS E2
+ON
+E1.MANAGER_ID = E2.EMP_ID;
